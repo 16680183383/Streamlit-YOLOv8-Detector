@@ -1,6 +1,24 @@
 import streamlit as st
 from utils import *
 
+# Function for loading data from yaml file
+def load_yaml(file_path: str) -> dict:
+    """
+    Load YAML file.
+
+    Args:
+        file_path (str): Path to the YAML file.
+
+    Returns:
+        dict: Loaded YAML data.
+    """
+    with open(file_path, 'r') as file:
+        try:
+            data = yaml.safe_load(file)
+            return data
+        except yaml.YAMLError as exc:
+            print(exc)
+
 # Set Streamlit page configuration
 st.set_page_config(
     page_title=" YOLOv8 Assistant",
